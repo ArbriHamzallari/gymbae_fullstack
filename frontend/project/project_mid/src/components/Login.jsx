@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 function Login() {
@@ -7,6 +7,8 @@ function Login() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const redirectTo = searchParams.get('redirect') || '/account'
   const { login } = useAuth()
 
   const handleSubmit = async e => {
@@ -14,7 +16,7 @@ function Login() {
     setError('')
     try {
       await login(email, password)
-      navigate('/account')
+      navigate(redirectTo.startsWith('/') ? redirectTo : `/${redirectTo}`)
     } catch (err) {
       setError(err.message || 'Invalid credentials or user not registered.')
     }

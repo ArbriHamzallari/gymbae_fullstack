@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CheckCircle2 } from "lucide-react";
 import { pricingOptions } from "../constants";
 
@@ -31,12 +32,12 @@ const Pricing = () => {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#"
+              <Link
+                to={`/checkout/${option.title}`}
                 className="inline-flex justify-center items-center text-center w-full h-12 p-5 mt-20 tracking-tight text-xl hover:bg-rose-900 border border-rose-900 rounded-lg transition duration-200"
               >
                 Subscribe
-              </a>
+              </Link>
             </div>
           </div>
         ))}

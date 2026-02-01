@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import MyAccount from "./components/Account/MyAccount";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import Checkout from "./components/Checkout";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/checkout/:tier" element={<Checkout />} />
           <Route
             path="/account/*"
             element={

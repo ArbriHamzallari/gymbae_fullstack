@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import video1 from "../assets/video1.mp4";
 import video2 from "../assets/video2.mp4";
 
 const HeroSection = () => {
+  const formRef = useRef(null);
+  const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -23,6 +26,13 @@ const HeroSection = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  // Scroll form into view when it appears so the user sees it immediately
+  useEffect(() => {
+    if (showForm && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [showForm]);
 
   const handleStartClick = (e) => {
     e.preventDefault();
@@ -46,6 +56,15 @@ const HeroSection = () => {
 
     localStorage.setItem("profileData", JSON.stringify(profileData));
     setSubmitted(true);
+    // Redirect to signup with prefill so the user completes account creation
+    navigate("/signup", {
+      state: {
+        email: formData.email,
+        fullName: formData.fullName,
+        fromHero: true,
+      },
+      replace: true,
+    });
   };
 
   return (
@@ -76,7 +95,7 @@ const HeroSection = () => {
 
       {/* FORM SECTION */}
       {showForm && (
-        <div className="w-full max-w-3xl bg-white border border-rose-100 rounded-xl shadow-md px-6 py-8 mb-10">
+        <div ref={formRef} className="w-full max-w-3xl bg-white border border-rose-100 rounded-xl shadow-md px-6 py-8 mb-10">
           <h2 className="text-2xl font-bold text-rose-700 mb-4 text-center">
             Tell us about you
           </h2>
@@ -223,10 +242,10 @@ const HeroSection = () => {
             </div>
           </form>
 
-          {/* Success message */}
+          {/* Brief success message (user is redirected to signup) */}
           {submitted && (
             <p className="mt-4 text-center text-rose-700 font-semibold">
-              One of our experts will generate your perfect plan immediately!
+              Taking you to create your account…
             </p>
           )}
         </div>

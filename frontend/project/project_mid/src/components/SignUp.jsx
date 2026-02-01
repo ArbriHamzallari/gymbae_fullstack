@@ -1,10 +1,15 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { apiFetch } from '../lib/api'
+import { useAuth } from '../context/AuthContext'
 
 function SignUp() {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
+  const location = useLocation()
+  const state = location.state || {}
+  const { login } = useAuth()
+  // Pre-fill from hero "Get started now" flow when present
+  const [username, setUsername] = useState(state.fullName ?? '')
+  const [email, setEmail] = useState(state.email ?? '')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
@@ -21,8 +26,9 @@ function SignUp() {
         const text = await res.text()
         throw new Error(text || 'Sign up failed')
       }
-      alert('Account created successfully. You can now log in.')
-      navigate('/login')
+      // Sign in with the new account and go to My Account
+      await login(email, password)
+      navigate('/account')
     } catch (err) {
       setError(err.message || 'Sign up failed.')
     }
