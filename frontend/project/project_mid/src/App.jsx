@@ -6,6 +6,10 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Checkout from "./components/Checkout";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AboutUs from "./components/AboutUs";
+import Language from "./components/Language";
+import Support from "./components/Support";
+import Terms from "./components/Terms";
 
 function App() {
   return (
@@ -17,6 +21,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/checkout/:tier" element={<Checkout />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/language" element={<Language />} />
           <Route
             path="/account/*"
             element={

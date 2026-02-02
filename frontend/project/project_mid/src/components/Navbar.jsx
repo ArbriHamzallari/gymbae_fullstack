@@ -94,10 +94,26 @@ const Navbar = () => {
               )}
             </li>
 
-            <li className="hover:text-rose-600">About Us</li>
-            <li className="hover:text-rose-600">Support</li>
-            <li className="hover:text-rose-600">Terms &amp; Policies</li>
-            <li className="hover:text-rose-600">Language            </li>
+            <li>
+              <Link to="/about-us" className="hover:text-rose-600">
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link to="/support" className="hover:text-rose-600">
+                Support
+              </Link>
+            </li>
+            <li>
+              <Link to="/terms" className="hover:text-rose-600">
+                Terms &amp; Policies
+              </Link>
+            </li>
+            <li>
+              <Link to="/language" className="hover:text-rose-600">
+                Language
+              </Link>
+            </li>
           </ul>
 
           <div className="flex items-center gap-3">
@@ -179,10 +195,26 @@ const Navbar = () => {
               )}
             </li>
 
-            <li className="border-b border-rose-200 pb-2">About Us</li>
-            <li className="border-b border-rose-200 pb-2">Support</li>
-            <li className="border-b border-rose-200 pb-2">Terms &amp; Policies</li>
-            <li className="border-b border-rose-200 pb-2">Language</li>
+            <li className="border-b border-rose-200 pb-2">
+              <Link to="/about-us" onClick={closeMobileMenu}>
+                About Us
+              </Link>
+            </li>
+            <li className="border-b border-rose-200 pb-2">
+              <Link to="/support" onClick={closeMobileMenu}>
+                Support
+              </Link>
+            </li>
+            <li className="border-b border-rose-200 pb-2">
+              <Link to="/terms" onClick={closeMobileMenu}>
+                Terms &amp; Policies
+              </Link>
+            </li>
+            <li className="border-b border-rose-200 pb-2">
+              <Link to="/language" onClick={closeMobileMenu}>
+                Language
+              </Link>
+            </li>
           </ul>
 
           <div className="mt-4 flex flex-col gap-2">
