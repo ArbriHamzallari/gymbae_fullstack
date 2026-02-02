@@ -1,4 +1,3 @@
-/** Match backend enums. Values sent in API requests. */
 export const Goal = {
   LoseWeight: 1,
   GainMuscle: 2,

@@ -4,9 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GymBae.Controllers
 {
-    /// <summary>
-    /// Checkout catalog for demo. No real payment processing.
-    /// </summary>
     [ApiController]
     [Route("api/checkout")]
     public class CheckoutController : ControllerBase
@@ -58,14 +55,12 @@ namespace GymBae.Controllers
             }
         };
 
-        /// <summary>GET: api/checkout/plans — Catalog for checkout page. No auth required.</summary>
         [HttpGet("plans")]
         public IActionResult GetPlans()
         {
             return Ok(Plans);
         }
 
-        /// <summary>GET: api/checkout/plans/{tier} — Single plan by tier name (Free, Pro, Elite).</summary>
         [HttpGet("plans/{tierName}")]
         public IActionResult GetPlanByTier(string tierName)
         {

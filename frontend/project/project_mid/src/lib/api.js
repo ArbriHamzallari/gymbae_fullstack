@@ -13,10 +13,6 @@ export function clearToken() {
   localStorage.removeItem(TOKEN_KEY);
 }
 
-/**
- * Fetch with optional Authorization: Bearer <token> when token exists.
- * Handles network errors gracefully by throwing an error that components can catch.
- */
 export async function apiFetch(path, options = {}) {
   const url = path.startsWith('http') ? path : `${API_BASE}${path}`;
   const headers = { ...options.headers };
@@ -31,8 +27,6 @@ export async function apiFetch(path, options = {}) {
     const res = await fetch(url, { ...options, headers });
     return res;
   } catch (err) {
-    // Network error - backend unavailable
-    // Throw an error that components can catch and display user-friendly message
     throw new Error('Unable to connect to server. Please check your internet connection and try again.');
   }
 }

@@ -19,7 +19,6 @@ namespace GymBae.Controllers
             _planService = planService;
         }
 
-        /// <summary>GET: api/plan/me</summary>
         [HttpGet("me")]
         public async Task<IActionResult> GetMyPlan()
         {
@@ -55,7 +54,6 @@ namespace GymBae.Controllers
             return Ok(created);
         }
 
-        /// <summary>PUT: api/plan/me</summary>
         [HttpPut("me")]
         public async Task<IActionResult> UpdateMyPlan([FromBody] UpdatePlanRequest request)
         {
@@ -77,7 +75,6 @@ namespace GymBae.Controllers
             return Ok(updated);
         }
 
-        /// <summary>DELETE: api/plan/me</summary>
         [HttpDelete("me")]
         public async Task<IActionResult> DeleteMyPlan()
         {

@@ -19,7 +19,6 @@ const HeroSection = () => {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  // Age options: 16–80
   const ages = Array.from({ length: 65 }, (_, i) => i + 16);
 
   const handleChange = (e) => {
@@ -27,7 +26,6 @@ const HeroSection = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Scroll form into view when it appears so the user sees it immediately
   useEffect(() => {
     if (showForm && formRef.current) {
       formRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -56,7 +54,6 @@ const HeroSection = () => {
 
     localStorage.setItem("profileData", JSON.stringify(profileData));
     setSubmitted(true);
-    // Redirect to signup with prefill so the user completes account creation
     navigate("/signup", {
       state: {
         email: formData.email,
@@ -83,7 +80,6 @@ const HeroSection = () => {
         results. Your journey to a stronger, healthier you starts here.
       </p>
 
-      {/* CTA button */}
       <div className="flex justify-center my-10">
         <button
           onClick={handleStartClick}
@@ -93,7 +89,6 @@ const HeroSection = () => {
         </button>
       </div>
 
-      {/* FORM SECTION */}
       {showForm && (
         <div ref={formRef} className="w-full max-w-3xl bg-white border border-rose-100 rounded-xl shadow-md px-6 py-8 mb-10">
           <h2 className="text-2xl font-bold text-rose-700 mb-4 text-center">
@@ -104,7 +99,6 @@ const HeroSection = () => {
           </p>
 
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Full Name */}
             <div className="md:col-span-2">
               <label className="block text-sm text-gray-600 mb-1">Full Name</label>
               <input
@@ -117,7 +111,6 @@ const HeroSection = () => {
               />
             </div>
 
-            {/* Goal - SELECT */}
             <div className="md:col-span-2">
               <label className="block text-sm text-gray-600 mb-1">Goal</label>
               <select
@@ -134,7 +127,6 @@ const HeroSection = () => {
               </select>
             </div>
 
-            {/* Previous experience - SELECT */}
             <div className="md:col-span-2">
               <label className="block text-sm text-gray-600 mb-1">
                 Previous experience in the gym
@@ -155,7 +147,6 @@ const HeroSection = () => {
               </select>
             </div>
 
-            {/* Age - SELECT */}
             <div>
               <label className="block text-sm text-gray-600 mb-1">Age</label>
               <select
@@ -174,7 +165,6 @@ const HeroSection = () => {
               </select>
             </div>
 
-            {/* Gender - SELECT */}
             <div>
               <label className="block text-sm text-gray-600 mb-1">Gender</label>
               <select
@@ -192,7 +182,6 @@ const HeroSection = () => {
               </select>
             </div>
 
-            {/* Height */}
             <div>
               <label className="block text-sm text-gray-600 mb-1">Height (cm)</label>
               <input
@@ -205,7 +194,6 @@ const HeroSection = () => {
               />
             </div>
 
-            {/* Weight */}
             <div>
               <label className="block text-sm text-gray-600 mb-1">Weight (kg)</label>
               <input
@@ -218,7 +206,6 @@ const HeroSection = () => {
               />
             </div>
 
-            {/* Email */}
             <div className="md:col-span-2">
               <label className="block text-sm text-gray-600 mb-1">Email</label>
               <input
@@ -231,7 +218,6 @@ const HeroSection = () => {
               />
             </div>
 
-            {/* Submit button */}
             <div className="md:col-span-2 flex justify-end mt-4">
               <button
                 type="submit"
@@ -242,7 +228,6 @@ const HeroSection = () => {
             </div>
           </form>
 
-          {/* Brief success message (user is redirected to signup) */}
           {submitted && (
             <p className="mt-4 text-center text-rose-700 font-semibold">
               Taking you to create your account…
@@ -251,7 +236,6 @@ const HeroSection = () => {
         </div>
       )}
 
-      {/* Videos */}
       <div className="flex mt-10 justify-center">
         <video
           autoPlay

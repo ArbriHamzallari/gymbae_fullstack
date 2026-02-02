@@ -1,4 +1,4 @@
-﻿using GymBae.Data;
+using GymBae.Data;
 using GymBae.Model;
 using GymBae.Model.DTOs;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +23,6 @@ namespace GymBae.Controllers
             _config = config;
         }
 
-        //SIGN UP
         [HttpPost("signup")]
         public async Task<IActionResult> SignUp(SignUpRequest request)
         {
@@ -44,7 +43,6 @@ namespace GymBae.Controllers
             return Ok(new { message = "User created successfully" });
         }
 
-        //LOGIN
         [HttpPost("login")]
         public async Task<ActionResult<AuthResponse>> Login(LoginRequest request)
         {

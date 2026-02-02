@@ -14,7 +14,6 @@ const MyAccount = () => {
           Manage your profile, fitness plan and subscription details.
         </p>
 
-        {/* Quick navigation buttons */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <Link
             to="profile"
@@ -41,7 +40,6 @@ const MyAccount = () => {
           </Link>
         </div>
 
-        {/* Content area */}
         <div className="border-t border-rose-100 pt-6">
           <Routes>
             <Route

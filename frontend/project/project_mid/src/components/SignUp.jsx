@@ -7,7 +7,6 @@ function SignUp() {
   const location = useLocation()
   const state = location.state || {}
   const { login } = useAuth()
-  // Pre-fill from hero "Get started now" flow when present
   const [username, setUsername] = useState(state.fullName ?? '')
   const [email, setEmail] = useState(state.email ?? '')
   const [password, setPassword] = useState('')
@@ -26,7 +25,6 @@ function SignUp() {
         const text = await res.text()
         throw new Error(text || 'Sign up failed')
       }
-      // Sign in with the new account and go to My Account
       await login(email, password)
       navigate('/account')
     } catch (err) {
@@ -40,7 +38,6 @@ function SignUp() {
         <h2 className="text-2xl font-bold text-center text-rose-700 mb-6">Sign Up</h2>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Username */}
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-1">Username</label>
             <input
@@ -52,7 +49,6 @@ function SignUp() {
             />
           </div>
 
-          {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-1">Email</label>
             <input
@@ -64,7 +60,6 @@ function SignUp() {
             />
           </div>
 
-          {/* Password */}
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-1">Password</label>
             <input

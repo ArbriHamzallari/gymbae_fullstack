@@ -19,8 +19,6 @@ namespace GymBae.Controllers
             _profileServices = profileServices;
         }
 
-        // CREATE PROFILE (Onboarding)
-        // POST: api/profile/create
         [HttpPost("create")]
         public async Task<IActionResult> CreateProfile(CreateUserProfileRequest request)
         {
@@ -48,8 +46,6 @@ namespace GymBae.Controllers
             return Ok(created);
         }
 
-        // GET MY PROFILE
-        // GET: api/profile/me
         [HttpGet("me")]
         public async Task<IActionResult> GetMyProfile()
         {
@@ -64,8 +60,6 @@ namespace GymBae.Controllers
             return Ok(profile);
         }
 
-        // UPDATE MY PROFILE
-        // PUT: api/profile/update
         [HttpPut("update")]
         public async Task<IActionResult> UpdateMyProfile(UpdateUserProfileRequest request)
         {
@@ -92,8 +86,6 @@ namespace GymBae.Controllers
             return Ok(updated);
         }
 
-        // DELETE MY PROFILE
-        // DELETE: api/profile/delete
         [HttpDelete("delete")]
         public async Task<IActionResult> DeleteMyProfile()
         {
@@ -108,7 +100,6 @@ namespace GymBae.Controllers
             return Ok(new { message = "Profile deleted successfully" });
         }
 
-        // 🔐 Helper
         private int? GetUserIdFromToken()
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;

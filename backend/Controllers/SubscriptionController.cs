@@ -19,7 +19,6 @@ namespace GymBae.Controllers
             _subscriptionService = subscriptionService;
         }
 
-        /// <summary>GET: api/subscription/me — Mock only, no real payment.</summary>
         [HttpGet("me")]
         public async Task<IActionResult> GetMySubscription()
         {
@@ -32,7 +31,6 @@ namespace GymBae.Controllers
             return Ok(ToResponse(sub));
         }
 
-        /// <summary>POST: api/subscription — Mock subscribe. No payment.</summary>
         [HttpPost]
         public async Task<IActionResult> CreateSubscription([FromBody] CreateSubscriptionRequest request)
         {
@@ -62,7 +60,6 @@ namespace GymBae.Controllers
             return Ok(ToResponse(sub));
         }
 
-        /// <summary>DELETE: api/subscription/me</summary>
         [HttpDelete("me")]
         public async Task<IActionResult> DeleteMySubscription()
         {

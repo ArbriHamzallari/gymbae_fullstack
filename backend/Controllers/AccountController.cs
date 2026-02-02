@@ -19,10 +19,6 @@ namespace GymBae.Controllers
             _userServices = userServices;
         }
 
-        /// <summary>
-        /// GET: api/account/me
-        /// Returns current user's id, email, and name (from JWT).
-        /// </summary>
         [HttpGet("me")]
         public async Task<IActionResult> GetMe()
         {

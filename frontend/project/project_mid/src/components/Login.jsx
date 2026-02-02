@@ -28,7 +28,6 @@ function Login() {
         <h2 className="text-2xl font-bold text-center text-rose-700 mb-6">Sign In</h2>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-1">Email</label>
             <input
@@ -40,7 +39,6 @@ function Login() {
             />
           </div>
 
-          {/* Password */}
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-1">Password</label>
             <input

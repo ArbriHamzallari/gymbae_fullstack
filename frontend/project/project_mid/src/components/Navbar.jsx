@@ -36,14 +36,12 @@ const Navbar = () => {
   return (
     <nav className="w-screen h-20 fixed top-0 left-0 z-50 bg-rose-50 border-b border-rose-100 drop-shadow-sm">
       <div className="max-w-6xl mx-auto px-4 h-full flex items-center justify-between">
-        {/* Logo / title */}
         <Link to="/" onClick={closeMobileMenu}>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-rose-700 transition-all duration-300">
             {isAccountRoute ? 'My Account' : 'GymBae'}
           </h1>
         </Link>
 
-        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           <ul className="flex items-center gap-6 text-sm font-medium text-gray-700">
             <li>
@@ -52,7 +50,6 @@ const Navbar = () => {
               </Link>
             </li>
 
-            {/* My Account dropdown */}
             <li
               className="relative flex items-center gap-1 cursor-pointer"
               onMouseEnter={() => setShowAccountMenu(true)}
@@ -100,10 +97,9 @@ const Navbar = () => {
             <li className="hover:text-rose-600">About Us</li>
             <li className="hover:text-rose-600">Support</li>
             <li className="hover:text-rose-600">Terms &amp; Policies</li>
-            <li className="hover:text-rose-600">Language</li>
+            <li className="hover:text-rose-600">Language            </li>
           </ul>
 
-          {/* Auth buttons */}
           <div className="flex items-center gap-3">
             {isLoggedIn ? (
               <button
@@ -133,7 +129,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile toggle */}
         <button
           className="md:hidden flex items-center justify-center p-2 rounded-md border border-rose-200"
           onClick={toggleMenu}
@@ -143,7 +138,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
         <div className="md:hidden bg-rose-50 border-t border-rose-100 px-4 pb-4">
           <ul className="flex flex-col gap-3 pt-3 text-sm text-gray-800">
@@ -153,7 +147,6 @@ const Navbar = () => {
               </Link>
             </li>
 
-            {/* Mobile My Account accordion */}
             <li className="border-b border-rose-200 pb-2">
               <button
                 className="w-full flex items-center justify-between"

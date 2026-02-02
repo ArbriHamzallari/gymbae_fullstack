@@ -1,4 +1,4 @@
-﻿using GymBae.Data;
+using GymBae.Data;
 using GymBae.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +17,6 @@ namespace GymBae.Services
             if (profile == null)
                 return null;
 
-            // Prevent duplicate profile for same user
             var exists = await _context.UserProfiles
                 .AnyAsync(p => p.UserId == profile.UserId);
 

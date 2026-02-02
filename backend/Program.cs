@@ -24,15 +24,11 @@ namespace GymBae
                 );
             });
 
-            // Add services to the container.
-            // Add this where you register your services (before builder.Build())
             builder.Services.AddScoped<IUserServices, UserServices>();
             builder.Services.AddScoped<IUserProfileServices, UserProfileServices>();
             builder.Services.AddScoped<IPlanService, PlanService>();
             builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 
-
-            //JWT Authentication 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -52,13 +48,11 @@ namespace GymBae
 
             builder.Services.AddAuthorization();
 
-            //CORS (React frontend)
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowReactApp",
                     policy =>
                     {
-                        // Allow localhost and remote frontend URLs
                         var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() 
                             ?? new[] { "http://localhost:5173", "http://localhost:5174" };
                         
@@ -71,7 +65,6 @@ namespace GymBae
 
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
@@ -103,7 +96,6 @@ namespace GymBae
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();

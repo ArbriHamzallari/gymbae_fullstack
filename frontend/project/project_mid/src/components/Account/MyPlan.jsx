@@ -57,7 +57,6 @@ const MyPlan = () => {
     e.preventDefault();
     setError("");
     
-    // Validation - at least one field should be filled
     const payload = {
       name: plan.name.trim() || null,
       workoutSchedule: plan.workoutSchedule.trim() || null,
@@ -79,9 +78,7 @@ const MyPlan = () => {
         });
         if (!res.ok) {
           const text = await res.text();
-          // Check if plan already exists (duplicate)
           if (res.status === 400 && text.toLowerCase().includes("already exists")) {
-            // Switch to edit mode - fetch existing plan
             setIsCreateMode(false);
             setIsEditing(true);
             const meRes = await apiFetch("/api/plan/me");

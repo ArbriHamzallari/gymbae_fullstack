@@ -22,16 +22,13 @@ export function AuthProvider({ children }) {
         const data = await res.json();
         setUser(data);
       } else if (res.status === 401) {
-        // Expired or invalid JWT - clear token and redirect to login
         clearToken();
         setUser(null);
-        // Redirect will be handled by ProtectedRoute
       } else {
         clearToken();
         setUser(null);
       }
     } catch (err) {
-      // Network error or other exception
       clearToken();
       setUser(null);
     } finally {
@@ -59,14 +56,12 @@ export function AuthProvider({ children }) {
       if (meRes.ok) {
         setUser(await meRes.json());
       } else if (meRes.status === 401) {
-        // Token invalid immediately after login - clear and throw
         clearToken();
         throw new Error('Authentication failed. Please try again.');
       } else {
         setUser({ id: data.userId, email: data.email, name: '' });
       }
     } catch (err) {
-      // Network error or other issue
       clearToken();
       throw err;
     }
